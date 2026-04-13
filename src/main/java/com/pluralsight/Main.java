@@ -1,17 +1,23 @@
 package com.pluralsight;
 
+import java.util.Scanner;
+
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     static void main() {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        IO.println(String.format("Hello and welcome!"));
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("enter principal:");
+        double p = scanner.nextDouble();
+        System.out.println("enter annual interest rate:");
+        double annualInterestRate = scanner.nextDouble()/1200;
+        System.out.println("enter number of years:");
+        int numberOfYears = scanner.nextInt();
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            IO.println("i = " + i);
-        }
+        double monthly_payment = p*((annualInterestRate*Math.pow(1+annualInterestRate,numberOfYears*12))/(Math.pow(1+annualInterestRate,numberOfYears*12)-1));
+        System.out.println("Monthly interest rate: "+monthly_payment);
+
+        double total_interest = (monthly_payment*12*numberOfYears) - p;
+        System.out.println("Total interest: "+total_interest);
     }
 }
